@@ -1,0 +1,80 @@
+{
+  "kind": "collectionType",
+  "collectionName": "projects",
+  "info": {
+    "singularName": "project",
+    "pluralName": "projects",
+    "displayName": "Project",
+    "description": "Project showcase content type"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 255
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "category": {
+      "type": "string",
+      "required": true,
+      "maxLength": 100
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "metrics": {
+      "type": "string",
+      "required": false,
+      "maxLength": 255
+    },
+    "ctaText": {
+      "type": "string",
+      "required": false,
+      "maxLength": 50,
+      "default": "Learn More"
+    },
+    "imagePosition": {
+      "type": "enumeration",
+      "enum": ["left", "right"],
+      "default": "left",
+      "required": true
+    },
+    "featured_image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "gallery": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false
+    },
+    "order": {
+      "type": "integer",
+      "default": 0
+    },
+    "meta_title": {
+      "type": "string",
+      "maxLength": 60
+    },
+    "meta_description": {
+      "type": "text",
+      "maxLength": 160
+    }
+  }
+}

@@ -1,11 +1,11 @@
 {
   "kind": "collectionType",
-  "collectionName": "services",
+  "collectionName": "missions",
   "info": {
-    "singularName": "service",
-    "pluralName": "services",
-    "displayName": "Service",
-    "description": "Company services"
+    "singularName": "mission",
+    "pluralName": "missions",
+    "displayName": "Mission",
+    "description": "Company missions, vision, and values"
   },
   "options": {
     "draftAndPublish": true
@@ -21,13 +21,11 @@
       "type": "text",
       "required": true
     },
-    "gradientFrom": {
-      "type": "string",
-      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
+    "icon": {
+      "type": "string"
     },
-    "gradientTo": {
-      "type": "string",
-      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
+    "iconSrc": {
+      "type": "string"
     },
     "featured": {
       "type": "boolean",
@@ -36,9 +34,6 @@
     "order": {
       "type": "integer",
       "default": 0
-    },
-    "tags": {
-      "type": "json"
     }
   }
 }

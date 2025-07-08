@@ -1,11 +1,11 @@
 {
   "kind": "collectionType",
-  "collectionName": "articles",
+  "collectionName": "blogs",
   "info": {
-    "singularName": "article",
-    "pluralName": "articles",
-    "displayName": "Article",
-    "description": "Blog articles"
+    "singularName": "blog",
+    "pluralName": "blogs",
+    "displayName": "Blog",
+    "description": "Blog posts and content management"
   },
   "options": {
     "draftAndPublish": true
@@ -42,6 +42,14 @@
       "type": "integer",
       "default": 5
     },
+    "featured": {
+      "type": "boolean",
+      "default": false
+    },
+    "views": {
+      "type": "integer",
+      "default": 0
+    },
     "meta_title": {
       "type": "string"
     },
@@ -52,19 +60,19 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::category.category",
-      "inversedBy": "articles"
+      "inversedBy": "blogs"
     },
     "tags": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::tag.tag",
-      "mappedBy": "articles"
+      "mappedBy": "blogs"
     },
     "author": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::author.author",
-      "inversedBy": "articles"
+      "inversedBy": "blogs"
     }
   }
 }

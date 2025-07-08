@@ -5,10 +5,10 @@
     "singularName": "category",
     "pluralName": "categories",
     "displayName": "Category",
-    "description": "Article categories"
+    "description": "Content categories"
   },
   "options": {
-    "draftAndPublish": false
+    "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
@@ -27,12 +27,29 @@
     },
     "color": {
       "type": "string",
-      "default": "#3B82F6"
+      "default": "#3B82F6",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
     },
-    "articles": {
+    "featured": {
+      "type": "boolean",
+      "default": false
+    },
+    "order": {
+      "type": "integer",
+      "default": 0
+    },
+    "meta_title": {
+      "type": "string",
+      "maxLength": 60
+    },
+    "meta_description": {
+      "type": "text",
+      "maxLength": 160
+    },
+    "blogs": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::article.article",
+      "target": "api::blog.blog",
       "mappedBy": "category"
     }
   }

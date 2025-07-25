@@ -7,6 +7,241 @@ module.exports = {
         // Direct seeding logic - no external file needed
         setTimeout(async () => {
             try {
+                // Authors seeding (must be first for blog relations)
+                const authors = [
+                    {
+                        name: "John Smith",
+                        email: "john.smith@example.com",
+                        bio: "Senior content strategist with 8+ years of experience in digital marketing and startup growth. Passionate about helping businesses scale through effective content marketing.",
+                        social_links: {
+                            twitter: "https://twitter.com/johnsmith",
+                            linkedin: "https://linkedin.com/in/johnsmith",
+                            github: "https://github.com/johnsmith"
+                        }
+                    },
+                    {
+                        name: "Sarah Johnson",
+                        email: "sarah.johnson@example.com",
+                        bio: "Marketing director and growth hacker specializing in SaaS and tech startups. Expert in conversion optimization and user acquisition strategies.",
+                        social_links: {
+                            twitter: "https://twitter.com/sarahjohnson",
+                            linkedin: "https://linkedin.com/in/sarahjohnson"
+                        }
+                    },
+                    {
+                        name: "Mike Chen",
+                        email: "mike.chen@example.com",
+                        bio: "Startup founder turned content creator. Shares insights on entrepreneurship, product development, and building successful teams.",
+                        social_links: {
+                            twitter: "https://twitter.com/mikechen",
+                            linkedin: "https://linkedin.com/in/mikechen",
+                            website: "https://mikechen.dev"
+                        }
+                    }
+                ];
+
+                // Categories seeding (must be before blogs for relations)
+                const categories = [
+                    {
+                        name: "Startup",
+                        slug: "startup",
+                        description: "Everything about building and scaling startups, from ideation to IPO.",
+                        color: "#3B82F6",
+                        featured: true,
+                        order: 1,
+                        meta_title: "Startup Articles and Guides",
+                        meta_description: "Comprehensive startup guides covering fundraising, team building, product development, and growth strategies.",
+                        publishedAt: new Date()
+                    },
+                    {
+                        name: "Marketing",
+                        slug: "marketing",
+                        description: "Digital marketing strategies, growth hacking, and customer acquisition techniques.",
+                        color: "#10B981",
+                        featured: true,
+                        order: 2,
+                        meta_title: "Marketing Strategy and Growth",
+                        meta_description: "Learn effective marketing strategies, growth hacking techniques, and customer acquisition methods.",
+                        publishedAt: new Date()
+                    },
+                    {
+                        name: "Technology",
+                        slug: "technology",
+                        description: "Latest trends in technology, software development, and digital innovation.",
+                        color: "#8B5CF6",
+                        featured: false,
+                        order: 3,
+                        meta_title: "Technology Trends and Innovation",
+                        meta_description: "Stay updated with the latest technology trends, software development practices, and digital innovations.",
+                        publishedAt: new Date()
+                    },
+                    {
+                        name: "Business",
+                        slug: "business",
+                        description: "Business strategy, leadership, and entrepreneurship insights.",
+                        color: "#F59E0B",
+                        featured: true,
+                        order: 4,
+                        meta_title: "Business Strategy and Leadership",
+                        meta_description: "Business strategy guides, leadership insights, and entrepreneurship advice for modern businesses.",
+                        publishedAt: new Date()
+                    }
+                ];
+
+                // Tags seeding (must be before blogs for relations)
+                const tags = [
+                    { name: "Fundraising", slug: "fundraising" },
+                    { name: "Product Development", slug: "product-development" },
+                    { name: "Team Building", slug: "team-building" },
+                    { name: "Growth Hacking", slug: "growth-hacking" },
+                    { name: "SEO", slug: "seo" },
+                    { name: "Content Marketing", slug: "content-marketing" },
+                    { name: "Social Media", slug: "social-media" },
+                    { name: "Analytics", slug: "analytics" },
+                    { name: "Conversion", slug: "conversion" },
+                    { name: "Leadership", slug: "leadership" },
+                    { name: "Innovation", slug: "innovation" },
+                    { name: "Strategy", slug: "strategy" }
+                ];
+
+                // Services seeding
+                const services = [
+                    {
+                        title: "Content Strategy & Creation",
+                        description: "Comprehensive content strategy development and high-quality content creation that drives engagement and converts visitors into customers.",
+                        gradientFrom: "#3B82F6",
+                        gradientTo: "#1D4ED8",
+                        featured: true,
+                        order: 1,
+                        tags: ["Content Marketing", "Strategy", "SEO"],
+                        publishedAt: new Date()
+                    },
+                    {
+                        title: "Social Media Management",
+                        description: "Full-service social media management including content creation, community engagement, and performance analytics across all major platforms.",
+                        gradientFrom: "#10B981",
+                        gradientTo: "#047857",
+                        featured: true,
+                        order: 2,
+                        tags: ["Social Media", "Content Marketing", "Analytics"],
+                        publishedAt: new Date()
+                    },
+                    {
+                        title: "SEO & Performance Marketing",
+                        description: "Advanced SEO optimization and performance marketing campaigns designed to increase organic traffic and improve search engine rankings.",
+                        gradientFrom: "#8B5CF6",
+                        gradientTo: "#6D28D9",
+                        featured: true,
+                        order: 3,
+                        tags: ["SEO", "Analytics", "Growth Hacking"],
+                        publishedAt: new Date()
+                    },
+                    {
+                        title: "Email Marketing Automation",
+                        description: "Sophisticated email marketing campaigns with automation workflows that nurture leads and drive conversions throughout the customer journey.",
+                        gradientFrom: "#F59E0B",
+                        gradientTo: "#D97706",
+                        featured: false,
+                        order: 4,
+                        tags: ["Email Marketing", "Automation", "Conversion"],
+                        publishedAt: new Date()
+                    },
+                    {
+                        title: "Brand Development & Design",
+                        description: "Complete brand identity development including logo design, brand guidelines, and visual assets that create a memorable and professional brand presence.",
+                        gradientFrom: "#EF4444",
+                        gradientTo: "#DC2626",
+                        featured: false,
+                        order: 5,
+                        tags: ["Branding", "Design", "Strategy"],
+                        publishedAt: new Date()
+                    },
+                    {
+                        title: "Analytics & Reporting",
+                        description: "Comprehensive analytics setup and detailed reporting that provides actionable insights to optimize your marketing performance and ROI.",
+                        gradientFrom: "#06B6D4",
+                        gradientTo: "#0891B2",
+                        featured: true,
+                        order: 6,
+                        tags: ["Analytics", "Reporting", "Strategy"],
+                        publishedAt: new Date()
+                    }
+                ];
+
+                // Projects seeding
+                const projects = [
+                    {
+                        title: "E-commerce Growth Campaign",
+                        slug: "ecommerce-growth-campaign",
+                        category: "E-commerce",
+                        description: "Comprehensive marketing campaign that increased online sales by 300% through strategic content marketing, social media advertising, and conversion optimization.",
+                        metrics: "300% increase in sales, 150% boost in traffic",
+                        ctaText: "View Case Study",
+                        imagePosition: "left",
+                        featured: true,
+                        order: 1,
+                        meta_title: "E-commerce Growth Campaign Case Study",
+                        meta_description: "Learn how we helped an e-commerce business achieve 300% sales growth through strategic marketing campaigns.",
+                        publishedAt: new Date()
+                    },
+                    {
+                        title: "SaaS Startup Launch Strategy",
+                        slug: "saas-startup-launch-strategy",
+                        category: "SaaS",
+                        description: "Complete go-to-market strategy for a B2B SaaS startup, including product positioning, content marketing, and lead generation campaigns.",
+                        metrics: "500+ qualified leads, 50% conversion rate",
+                        ctaText: "Learn More",
+                        imagePosition: "right",
+                        featured: true,
+                        order: 2,
+                        meta_title: "SaaS Startup Launch Strategy Case Study",
+                        meta_description: "Discover how we helped a SaaS startup achieve successful market entry with strategic marketing and positioning.",
+                        publishedAt: new Date()
+                    },
+                    {
+                        title: "Local Business Digital Transformation",
+                        slug: "local-business-digital-transformation",
+                        category: "Local Business",
+                        description: "Digital transformation project that helped a traditional local business establish strong online presence and increase customer acquisition by 200%.",
+                        metrics: "200% increase in customers, 80% online revenue growth",
+                        ctaText: "See Results",
+                        imagePosition: "left",
+                        featured: false,
+                        order: 3,
+                        meta_title: "Local Business Digital Transformation",
+                        meta_description: "See how we helped a local business achieve digital transformation and 200% customer growth.",
+                        publishedAt: new Date()
+                    },
+                    {
+                        title: "Tech Startup Brand Development",
+                        slug: "tech-startup-brand-development",
+                        category: "Technology",
+                        description: "Complete brand development and marketing strategy for a tech startup, from logo design to comprehensive digital marketing campaigns.",
+                        metrics: "Brand recognition increased by 400%, 250% social media growth",
+                        ctaText: "View Project",
+                        imagePosition: "right",
+                        featured: true,
+                        order: 4,
+                        meta_title: "Tech Startup Brand Development Project",
+                        meta_description: "Complete brand development case study showing 400% increase in brand recognition for a tech startup.",
+                        publishedAt: new Date()
+                    },
+                    {
+                        title: "Healthcare Marketing Campaign",
+                        slug: "healthcare-marketing-campaign",
+                        category: "Healthcare",
+                        description: "Specialized healthcare marketing campaign focusing on patient education, trust building, and compliance with healthcare marketing regulations.",
+                        metrics: "180% increase in patient inquiries, 95% satisfaction rate",
+                        ctaText: "Read More",
+                        imagePosition: "left",
+                        featured: false,
+                        order: 5,
+                        meta_title: "Healthcare Marketing Campaign Success",
+                        meta_description: "Healthcare marketing campaign that achieved 180% increase in patient inquiries while maintaining compliance.",
+                        publishedAt: new Date()
+                    }
+                ];
+
                 // Testimonials seeding
                 const testimonials = [
                     {
@@ -278,279 +513,152 @@ module.exports = {
                         </ul>
                         
                         <h3>The Path to Product-Market Fit</h3>
-                        <p>Achieving fit requires:</p>
-                        <ol>
-                        <li><strong>Deep customer understanding:</strong> Know your target market intimately</li>
-                        <li><strong>Rapid iteration:</strong> Build, measure, learn, and repeat quickly</li>
-                        <li><strong>Focus on core value:</strong> Identify and enhance your unique value proposition</li>
-                        <li><strong>Customer feedback loops:</strong> Maintain constant communication with users</li>
-                        <li><strong>Patience and persistence:</strong> It often takes longer than expected</li>
-                        </ol>
-                        
-                        <h3>Common Pitfalls to Avoid</h3>
+                        <p>Achieving product-market fit requires:</p>
                         <ul>
-                        <li>Building features customers don't want</li>
-                        <li>Targeting too broad a market initially</li>
-                        <li>Ignoring customer feedback</li>
-                        <li>Scaling before achieving fit</li>
-                        <li>Confusing vanity metrics with meaningful indicators</li>
+                        <li><strong>Deep customer understanding:</strong> Know your customers' pain points intimately</li>
+                        <li><strong>Iterative development:</strong> Build, measure, learn, and repeat</li>
+                        <li><strong>Focus on core value:</strong> Identify and double down on your unique value proposition</li>
+                        <li><strong>Market validation:</strong> Continuously test assumptions with real customers</li>
                         </ul>
                         
-                        <h3>After Achieving Product-Market Fit</h3>
-                        <p>Once you've achieved fit, focus on:</p>
+                        <h3>Common Mistakes to Avoid</h3>
+                        <p>Many startups fail to achieve product-market fit because they:</p>
                         <ul>
-                        <li>Scaling your operations efficiently</li>
-                        <li>Maintaining product quality as you grow</li>
-                        <li>Expanding to adjacent markets carefully</li>
-                        <li>Building sustainable competitive advantages</li>
+                        <li>Build features customers don't actually want</li>
+                        <li>Focus on vanity metrics instead of meaningful engagement</li>
+                        <li>Try to serve too broad a market initially</li>
+                        <li>Ignore customer feedback or misinterpret data</li>
+                        <li>Scale prematurely before achieving fit</li>
                         </ul>
                         
-                        <p>Product-market fit isn't a destination—it's an ongoing journey of understanding and serving your customers better than anyone else.</p>`,
+                        <p>Product-market fit isn't a destination—it's an ongoing process. Markets evolve, customer needs change, and successful companies continuously adapt to maintain their fit.</p>`,
                         read_time: 9,
                         featured: true,
                         views: 0,
-                        meta_title: "Product-Market Fit: The Ultimate Startup Success Guide",
-                        meta_description: "Master product-market fit with our comprehensive guide. Learn key indicators, measurement strategies, and how to achieve this crucial startup milestone.",
-                        publishedAt: new Date()
-                    },
-                    {
-                        title: "Startup Marketing on a Shoestring Budget",
-                        slug: "startup-marketing-shoestring-budget",
-                        excerpt: "Discover cost-effective marketing strategies that deliver real results. Learn how to build brand awareness, acquire customers, and grow your startup without breaking the bank.",
-                        content: `<h2>Marketing Your Startup: Maximum Impact, Minimum Budget</h2>
-                        
-                        <p>Most startups face the same challenge: how to build awareness and acquire customers with limited resources. The good news is that creativity and strategy can often outperform big budgets. Here's how to market your startup effectively without breaking the bank.</p>
-                        
-                        <h3>Content Marketing: Your Secret Weapon</h3>
-                        <p>Content marketing offers exceptional ROI for startups:</p>
-                        <ul>
-                        <li><strong>Blog regularly:</strong> Share insights, tutorials, and industry knowledge</li>
-                        <li><strong>Create valuable resources:</strong> Guides, templates, and tools your audience needs</li>
-                        <li><strong>Guest posting:</strong> Write for established publications in your industry</li>
-                        <li><strong>Video content:</strong> Leverage platforms like YouTube and TikTok</li>
-                        <li><strong>Podcasting:</strong> Start your own or appear as a guest on others</li>
-                        </ul>
-                        
-                        <h3>Social Media Strategy</h3>
-                        <p>Focus on platforms where your audience is most active:</p>
-                        <ul>
-                        <li><strong>LinkedIn:</strong> Perfect for B2B startups and thought leadership</li>
-                        <li><strong>Twitter:</strong> Great for real-time engagement and industry conversations</li>
-                        <li><strong>Instagram:</strong> Visual storytelling and behind-the-scenes content</li>
-                        <li><strong>TikTok:</strong> Creative, authentic content that can go viral</li>
-                        </ul>
-                        
-                        <h3>Community Building and Partnerships</h3>
-                        <p>Build relationships that drive growth:</p>
-                        <ul>
-                        <li>Join relevant online communities and forums</li>
-                        <li>Partner with complementary businesses</li>
-                        <li>Attend industry events and meetups</li>
-                        <li>Create your own community around your product</li>
-                        <li>Collaborate with micro-influencers in your niche</li>
-                        </ul>
-                        
-                        <h3>Email Marketing Excellence</h3>
-                        <p>Email remains one of the highest ROI marketing channels:</p>
-                        <ul>
-                        <li>Build an email list from day one</li>
-                        <li>Create valuable lead magnets</li>
-                        <li>Segment your audience for personalized messaging</li>
-                        <li>Automate onboarding and nurture sequences</li>
-                        <li>Regular newsletters with genuine value</li>
-                        </ul>
-                        
-                        <h3>SEO and Organic Growth</h3>
-                        <p>Invest in long-term organic visibility:</p>
-                        <ul>
-                        <li>Research and target relevant keywords</li>
-                        <li>Optimize your website for search engines</li>
-                        <li>Create location-based content if relevant</li>
-                        <li>Build quality backlinks through relationships</li>
-                        <li>Focus on user experience and site speed</li>
-                        </ul>
-                        
-                        <h3>Referral and Word-of-Mouth Programs</h3>
-                        <p>Turn customers into advocates:</p>
-                        <ul>
-                        <li>Create formal referral programs with incentives</li>
-                        <li>Make sharing easy with social proof</li>
-                        <li>Exceed customer expectations consistently</li>
-                        <li>Ask for reviews and testimonials</li>
-                        <li>Showcase customer success stories</li>
-                        </ul>
-                        
-                        <h3>Measuring and Optimizing</h3>
-                        <p>Track what matters:</p>
-                        <ul>
-                        <li>Customer acquisition cost (CAC)</li>
-                        <li>Lifetime value (LTV)</li>
-                        <li>Conversion rates across channels</li>
-                        <li>Engagement metrics</li>
-                        <li>Return on marketing investment</li>
-                        </ul>
-                        
-                        <p>Remember, the best marketing strategy is one that's consistently executed. Start with one or two channels, master them, then expand your efforts as you grow.</p>`,
-                        read_time: 11,
-                        featured: false,
-                        views: 0,
-                        meta_title: "Startup Marketing on a Shoestring Budget: Complete Guide",
-                        meta_description: "Learn cost-effective marketing strategies for startups. Discover how to build brand awareness and acquire customers without breaking the bank.",
-                        publishedAt: new Date()
-                    },
-                    {
-                        title: "The Lean Startup Methodology: Build, Measure, Learn",
-                        slug: "lean-startup-methodology-build-measure-learn",
-                        excerpt: "Master the lean startup approach to building successful businesses. Learn how to validate ideas quickly, minimize waste, and iterate based on real customer feedback.",
-                        content: `<h2>The Lean Startup: A Revolutionary Approach to Building Businesses</h2>
-                        
-                        <p>The lean startup methodology, popularized by Eric Ries, has transformed how entrepreneurs approach building new businesses. By focusing on validated learning and rapid iteration, startups can reduce risk and increase their chances of success.</p>
-                        
-                        <h3>Core Principles of Lean Startup</h3>
-                        <p>The methodology is built on five fundamental principles:</p>
-                        <ol>
-                        <li><strong>Entrepreneurs are everywhere:</strong> Startups exist in all types of organizations</li>
-                        <li><strong>Entrepreneurship is management:</strong> Startups need structured approaches</li>
-                        <li><strong>Validated learning:</strong> Learning what customers want through experimentation</li>
-                        <li><strong>Build-Measure-Learn:</strong> The core feedback loop for development</li>
-                        <li><strong>Innovation accounting:</strong> Measuring progress in uncertain environments</li>
-                        </ol>
-                        
-                        <h3>The Build-Measure-Learn Cycle</h3>
-                        <p>This cycle is the heart of lean startup methodology:</p>
-                        
-                        <h4>Build</h4>
-                        <ul>
-                        <li>Create a Minimum Viable Product (MVP)</li>
-                        <li>Focus on core features that test key assumptions</li>
-                        <li>Build the smallest thing that provides learning</li>
-                        <li>Prioritize speed over perfection</li>
-                        </ul>
-                        
-                        <h4>Measure</h4>
-                        <ul>
-                        <li>Define clear metrics and success criteria</li>
-                        <li>Collect data on customer behavior and feedback</li>
-                        <li>Use both quantitative and qualitative measurements</li>
-                        <li>Focus on actionable metrics, not vanity metrics</li>
-                        </ul>
-                        
-                        <h4>Learn</h4>
-                        <ul>
-                        <li>Analyze data to validate or invalidate hypotheses</li>
-                        <li>Make decisions based on evidence, not opinions</li>
-                        <li>Determine whether to pivot or persevere</li>
-                        <li>Apply learnings to the next iteration</li>
-                        </ul>
-                        
-                        <h3>Types of MVPs</h3>
-                        <p>Different MVPs serve different purposes:</p>
-                        <ul>
-                        <li><strong>Landing page MVP:</strong> Test demand with a simple webpage</li>
-                        <li><strong>Wizard of Oz MVP:</strong> Manual processes behind automated-seeming interfaces</li>
-                        <li><strong>Concierge MVP:</strong> Highly personalized, manual service delivery</li>
-                        <li><strong>Prototype MVP:</strong> Basic functional version of your product</li>
-                        <li><strong>Piecemeal MVP:</strong> Combine existing tools to deliver your solution</li>
-                        </ul>
-                        
-                        <h3>Pivot vs. Persevere</h3>
-                        <p>One of the hardest decisions in lean startup is knowing when to pivot:</p>
-                        
-                        <h4>Signs you might need to pivot:</h4>
-                        <ul>
-                        <li>Consistently missing growth targets</li>
-                        <li>Low customer engagement or retention</li>
-                        <li>Difficulty acquiring customers</li>
-                        <li>Market feedback contradicts your assumptions</li>
-                        </ul>
-                        
-                        <h4>Types of pivots:</h4>
-                        <ul>
-                        <li><strong>Customer segment pivot:</strong> Same solution, different market</li>
-                        <li><strong>Problem pivot:</strong> Same market, different problem</li>
-                        <li><strong>Solution pivot:</strong> Same problem, different solution</li>
-                        <li><strong>Revenue model pivot:</strong> Same product, different monetization</li>
-                        <li><strong>Platform pivot:</strong> App to platform or vice versa</li>
-                        </ul>
-                        
-                        <h3>Innovation Accounting</h3>
-                        <p>Traditional accounting doesn't work for startups. Innovation accounting focuses on:</p>
-                        <ul>
-                        <li>Learning milestones rather than traditional metrics</li>
-                        <li>Cohort analysis to understand customer behavior</li>
-                        <li>Split testing to validate assumptions</li>
-                        <li>Customer development metrics</li>
-                        <li>Progress toward product-market fit</li>
-                        </ul>
-                        
-                        <h3>Common Lean Startup Mistakes</h3>
-                        <ul>
-                        <li>Building too much before testing</li>
-                        <li>Focusing on vanity metrics</li>
-                        <li>Not talking to customers enough</li>
-                        <li>Pivoting too quickly or too slowly</li>
-                        <li>Misunderstanding what \"minimum\" means in MVP</li>
-                        </ul>
-                        
-                        <p>The lean startup methodology isn't just for tech companies—it's a mindset that can be applied to any new venture. By embracing uncertainty and focusing on learning, entrepreneurs can build better businesses with less waste and higher success rates.</p>`,
-                        read_time: 13,
-                        featured: true,
-                        views: 0,
-                        meta_title: "The Lean Startup Methodology: Complete Build-Measure-Learn Guide",
-                        meta_description: "Master the lean startup methodology. Learn the Build-Measure-Learn cycle, MVP strategies, pivot decisions, and innovation accounting for startup success.",
+                        meta_title: "Product-Market Fit: Complete Guide for Startups",
+                        meta_description: "Learn what product-market fit means, how to measure it, and strategies to achieve this crucial startup milestone. Avoid common mistakes and build sustainable growth.",
                         publishedAt: new Date()
                     }
                 ];
 
-                // Check if testimonials already exist
+                // Seeding functions with proper error handling and relationship management
+                
+                // Seed Authors first (required for blog relations)
+                const existingAuthors = await strapi.entityService.findMany('api::author.author');
+                if (existingAuthors.length === 0) {
+                    console.log('Seeding authors...');
+                    const createdAuthors = [];
+                    for (const author of authors) {
+                        const createdAuthor = await strapi.entityService.create('api::author.author', {
+                            data: author
+                        });
+                        createdAuthors.push(createdAuthor);
+                    }
+                    console.log('Authors seeded successfully!');
+                } else {
+                    console.log('Authors already exist, skipping seed.');
+                }
+
+                // Seed Categories (required for blog relations)
+                const existingCategories = await strapi.entityService.findMany('api::category.category');
+                if (existingCategories.length === 0) {
+                    console.log('Seeding categories...');
+                    const createdCategories = [];
+                    for (const category of categories) {
+                        const createdCategory = await strapi.entityService.create('api::category.category', {
+                            data: category
+                        });
+                        createdCategories.push(createdCategory);
+                    }
+                    console.log('Categories seeded successfully!');
+                } else {
+                    console.log('Categories already exist, skipping seed.');
+                }
+
+                // Seed Tags (required for blog relations)
+                const existingTags = await strapi.entityService.findMany('api::tag.tag');
+                if (existingTags.length === 0) {
+                    console.log('Seeding tags...');
+                    const createdTags = [];
+                    for (const tag of tags) {
+                        const createdTag = await strapi.entityService.create('api::tag.tag', {
+                            data: tag
+                        });
+                        createdTags.push(createdTag);
+                    }
+                    console.log('Tags seeded successfully!');
+                } else {
+                    console.log('Tags already exist, skipping seed.');
+                }
+
+                // Seed Services
+                const existingServices = await strapi.entityService.findMany('api::service.service');
+                if (existingServices.length === 0) {
+                    console.log('Seeding services...');
+                    for (const service of services) {
+                        await strapi.entityService.create('api::service.service', {
+                            data: service
+                        });
+                    }
+                    console.log('Services seeded successfully!');
+                } else {
+                    console.log('Services already exist, skipping seed.');
+                }
+
+                // Seed Projects
+                const existingProjects = await strapi.entityService.findMany('api::project.project');
+                if (existingProjects.length === 0) {
+                    console.log('Seeding projects...');
+                    for (const project of projects) {
+                        await strapi.entityService.create('api::project.project', {
+                            data: project
+                        });
+                    }
+                    console.log('Projects seeded successfully!');
+                } else {
+                    console.log('Projects already exist, skipping seed.');
+                }
+
+                // Seed Testimonials
                 const existingTestimonials = await strapi.entityService.findMany('api::testimonial.testimonial');
-
                 if (existingTestimonials.length === 0) {
-                    console.log('🌱 Seeding testimonials...');
-
+                    console.log('Seeding testimonials...');
                     for (const testimonial of testimonials) {
                         await strapi.entityService.create('api::testimonial.testimonial', {
                             data: testimonial
                         });
                     }
-
-                    console.log('✅ Testimonials seeded successfully!');
+                    console.log('Testimonials seeded successfully!');
                 } else {
-                    console.log('📋 Testimonials already exist, skipping seed.');
+                    console.log('Testimonials already exist, skipping seed.');
                 }
 
-                // Check if FAQs already exist
+                // Seed FAQs
                 const existingFaqs = await strapi.entityService.findMany('api::faq.faq');
-
                 if (existingFaqs.length === 0) {
-                    console.log('🌱 Seeding FAQs...');
-
+                    console.log('Seeding FAQs...');
                     for (const faq of faqs) {
                         await strapi.entityService.create('api::faq.faq', {
                             data: faq
                         });
                     }
-
-                    console.log('✅ FAQs seeded successfully!');
+                    console.log('FAQs seeded successfully!');
                 } else {
-                    console.log('📋 FAQs already exist, skipping seed.');
+                    console.log('FAQs already exist, skipping seed.');
                 }
 
-                // Check if missions already exist
+                // Seed Missions
                 const existingMissions = await strapi.entityService.findMany('api::mission.mission');
-
                 if (existingMissions.length === 0) {
-                    console.log('🌱 Seeding missions...');
-
+                    console.log('Seeding missions...');
                     for (const mission of missions) {
                         await strapi.entityService.create('api::mission.mission', {
                             data: mission
                         });
                     }
-
-                    console.log('✅ Missions seeded successfully!');
+                    console.log('Missions seeded successfully!');
                 } else {
-                    console.log('📋 Missions already exist, skipping seed.');
+                    console.log('Missions already exist, skipping seed.');
                 }
 
                 // Add this missing blog seeding logic:
@@ -558,21 +666,38 @@ module.exports = {
                 const existingBlogs = await strapi.entityService.findMany('api::blog.blog');
 
                 if (existingBlogs.length === 0) {
-                    console.log('🌱 Seeding blogs...');
-
-                    for (const blog of blogs) {
+                    console.log('Seeding blogs...');
+                    
+                    // Get created authors, categories, and tags for relations
+                    const allAuthors = await strapi.entityService.findMany('api::author.author');
+                    const allCategories = await strapi.entityService.findMany('api::category.category');
+                    const allTags = await strapi.entityService.findMany('api::tag.tag');
+                    
+                    for (let i = 0; i < blogs.length; i++) {
+                        const blog = blogs[i];
+                        
+                        // Assign relations
+                        const blogWithRelations = {
+                            ...blog,
+                            author: allAuthors[i % allAuthors.length]?.id,
+                            category: allCategories[i % allCategories.length]?.id,
+                            tags: allTags.slice(i * 2, (i * 2) + 3).map(tag => tag.id) // Assign 2-3 tags per blog
+                        };
+                        
                         await strapi.entityService.create('api::blog.blog', {
-                            data: blog
+                            data: blogWithRelations
                         });
                     }
-
-                    console.log('✅ Blogs seeded successfully!');
+                    console.log('Blogs seeded successfully!');
                 } else {
-                    console.log('📋 Blogs already exist, skipping seed.');
+                    console.log('Blogs already exist, skipping seed.');
                 }
+
+                console.log('All seeding completed successfully!');
+
             } catch (error) {
-                console.error('❌ Error seeding data:', error);
+                console.error('Error during seeding:', error);
             }
-        }, 2000); // Increased timeout to ensure Strapi is fully loaded
+        }, 3000); // Increased timeout to ensure Strapi is fully loaded
     },
 };

@@ -8,9 +8,13 @@
     "description": "Content authors"
   },
   "options": {
-    "draftAndPublish": false
+    "draftAndPublish": true
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "name": {
       "type": "string",
@@ -18,11 +22,15 @@
     },
     "email": {
       "type": "email",
-      "required": true,
-      "unique": true
+      "required": true
     },
     "bio": {
-      "type": "text"
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "avatar": {
       "type": "media",

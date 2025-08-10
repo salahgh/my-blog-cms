@@ -1,4 +1,3 @@
-
 {
   "kind": "collectionType",
   "collectionName": "testimonials",
@@ -11,40 +10,76 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "testimonial": {
       "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "required": true
     },
     "author": {
       "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "required": true
     },
     "role": {
       "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "required": true
     },
     "avatar": {
       "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "required": false
     },
     "company": {
       "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "required": false
     },
     "rating": {
       "type": "integer",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "default": 5,
       "min": 1,
-      "max": 5,
-      "default": 5
+      "max": 5
     },
     "featured": {
       "type": "boolean",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "default": false
-    },
-    "publishedAt": {
-      "type": "datetime"
     }
   }
 }

@@ -10,10 +10,19 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "name": {
       "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "required": true,
       "unique": true
     },
@@ -23,27 +32,57 @@
       "required": true
     },
     "description": {
-      "type": "text"
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "color": {
       "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "default": "#3B82F6",
       "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
     },
     "featured": {
       "type": "boolean",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "default": false
     },
     "order": {
       "type": "integer",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "default": 0
     },
     "meta_title": {
       "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "maxLength": 60
     },
     "meta_description": {
       "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "maxLength": 160
     },
     "blogs": {

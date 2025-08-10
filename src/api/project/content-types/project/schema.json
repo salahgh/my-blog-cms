@@ -10,12 +10,21 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "title": {
       "type": "string",
-      "required": true,
-      "maxLength": 255
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "maxLength": 255,
+      "required": true
     },
     "slug": {
       "type": "uid",
@@ -24,56 +33,118 @@
     },
     "category": {
       "type": "string",
-      "required": true,
-      "maxLength": 100
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "maxLength": 100,
+      "required": true
     },
     "description": {
       "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "required": true
     },
     "metrics": {
       "type": "string",
-      "required": false,
-      "maxLength": 255
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "maxLength": 255,
+      "required": false
     },
     "ctaText": {
       "type": "string",
-      "required": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "default": "Learn More",
       "maxLength": 50,
-      "default": "Learn More"
+      "required": false
     },
     "imagePosition": {
       "type": "enumeration",
-      "enum": ["left", "right"],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true,
       "default": "left",
-      "required": true
+      "enum": [
+        "left",
+        "right"
+      ]
     },
     "featured_image": {
       "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "gallery": {
       "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "multiple": true,
       "required": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "featured": {
       "type": "boolean",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "default": false
     },
     "order": {
       "type": "integer",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "default": 0
     },
     "meta_title": {
       "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "maxLength": 60
     },
     "meta_description": {
       "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "maxLength": 160
     }
   }

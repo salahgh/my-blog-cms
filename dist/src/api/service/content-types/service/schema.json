@@ -35,6 +35,12 @@
             },
             "required": true
         },
+        "featured_image": {
+            "type": "media",
+            "multiple": false,
+            "required": false,
+            "allowedTypes": ["images"]
+        },
         "gradientFrom": {
             "type": "string",
             "pluginOptions": {
@@ -45,13 +51,13 @@
             "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
         },
         "gradientTo": {
-            "type": "string",
+            "type": "customField",
+            "customField": "plugin::color-picker.color",
             "pluginOptions": {
                 "i18n": {
                     "localized": true
                 }
-            },
-            "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
+            }
         },
         "featured": {
             "type": "boolean",

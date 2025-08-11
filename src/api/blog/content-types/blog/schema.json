@@ -53,6 +53,22 @@
         "images"
       ]
     },
+    "featured_image_overlay": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "gallery": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
     "read_time": {
       "type": "integer",
       "pluginOptions": {

@@ -22,7 +22,7 @@ export const runSeeds = async (strapi: any) => {
     try {
         console.log('🌱 Starting internationalized seeding process...');
 
-        // Seed Authors first (required for blog relations)
+        //Seed Authors first (required for blog relations)
         await seedAuthors(strapi, authorsData);
 
         // Seed Categories (required for blog relations)
@@ -34,7 +34,7 @@ export const runSeeds = async (strapi: any) => {
         // Seed Services
         await seedServices(strapi, servicesData);
 
-        // Seed Projects
+        //Seed Projects
         await seedProjects(strapi, projectsData);
 
         // Seed Testimonials
